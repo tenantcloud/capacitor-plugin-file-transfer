@@ -15,13 +15,17 @@ public class FileTransfer: CAPPlugin {
         if (!source.isEmpty && !target.isEmpty ) {
             let url = URL(string: source)
 
-            do {
-                try FileTransfer.loadFileAsync(url: url!, target: target) { (path, error) in
-                    print("File downloaded to : \(path!)")
-                    call.success();
+            DispatchQueue.global(qos: .utility).async {
+                do {
+                    try FileTransfer.loadFileAsync(url: url!, target: target) { (path, error) in
+                        print("File downloaded to : \(path!)")
+                        call.success();
+                    }
+                } catch {
+                    call.error("Download error. " + error.localizedDescription)
                 }
-            } catch {
-                call.error("Download error. " + error.localizedDescription)
+
+                return
             }
         }
     }
