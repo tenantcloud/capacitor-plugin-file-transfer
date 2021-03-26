@@ -12,9 +12,6 @@
   },
   "author": "Areo AS",
   "license": "MIT",
-  "dependencies": {
-    "@capacitor/core": "latest"
-  },
   "devDependencies": {
     "typescript": "^3.0.3"
   },

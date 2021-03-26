@@ -2,10 +2,10 @@ package io.areo.capacitor.filetransfer;
 
 import android.net.Uri;
 
-import com.getcapacitor.NativePlugin;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
+import com.getcapacitor.annotation.CapacitorPlugin;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +16,7 @@ import okhttp3.Response;
 import okio.BufferedSink;
 import okio.Okio;
 
-@NativePlugin()
+@CapacitorPlugin(name = "FileTransfer")
 public class FileTransfer extends Plugin {
     @PluginMethod()
     public void download(PluginCall call) {
@@ -25,9 +25,9 @@ public class FileTransfer extends Plugin {
 
         try {
             this.downloadToFile(srcUrl, dstFile);
-            call.success();
+            call.resolve();
         } catch (IOException e) {
-            call.error("FileTransfer download failed", e);
+            call.reject("FileTransfer download failed", e);
         }
     }
 

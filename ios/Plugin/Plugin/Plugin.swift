@@ -19,10 +19,10 @@ public class FileTransfer: CAPPlugin {
                 do {
                     try FileTransfer.loadFileAsync(url: url!, target: target) { (path, error) in
                         print("File downloaded to : \(path!)")
-                        call.success();
+                        call.resolve();
                     }
                 } catch {
-                    call.error("Download error. " + error.localizedDescription)
+                    call.reject("Download error. " + error.localizedDescription)
                 }
 
                 return
