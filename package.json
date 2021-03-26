@@ -2,8 +2,7 @@
   "name": "capacitor-plugin-file-transfer",
   "version": "0.0.1",
   "description": "Capacitor plugin for downloading files",
-  "main": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
+  "main": "src/index.ts",
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rm -rf ./dist",
