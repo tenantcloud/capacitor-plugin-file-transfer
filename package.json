@@ -2,17 +2,33 @@
   "name": "capacitor-plugin-file-transfer",
   "version": "0.0.1",
   "description": "Capacitor plugin for downloading files",
-  "main": "src/index.ts",
+  "main": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
   "scripts": {
     "build": "npm run clean && tsc",
-    "clean": "rm -rf ./dist",
+    "clean": "rimraf ./dist",
     "watch": "tsc --watch",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "npm-publish": "np"
   },
   "author": "Areo AS",
   "license": "MIT",
+  "dependencies": {
+    "@capacitor/core": "^3.0.0-rc.0"
+  },
   "devDependencies": {
-    "typescript": "^3.0.3"
+    "husky": "^4.2.5",
+    "np": "^7.4.0",
+    "prettier": "^2.2.1",
+    "prettier-plugin-java": "^0.8.0",
+    "pretty-quick": "^3.1.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.2.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "files": [
     "dist/",
